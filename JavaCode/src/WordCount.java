@@ -24,7 +24,7 @@ public class WordCount {
                 }
             }
             return true;
-        }).forEach(e->{
+        }).filter(e->!Arrays.asList(banList).contains(e)).forEach(e->{
             if(wordMap.containsKey(e)){
                 wordMap.put(e,wordMap.get(e)+1);
             }else {

@@ -278,7 +278,7 @@ public class GetContents {
     //if the decoding is not working, try gb18030
     public static void main(final String[] args) {
         String[] keyboardIn = args;
-        keyboardIn = new String[]{"E:/Research/348.pdf"};
+        keyboardIn = new String[]{"D:\\GITHUB\\TreeOfKnowledges\\testing\\348\\348.pdf","D:\\GITHUB\\TreeOfKnowledges\\testing\\348\\348.JSON"};
         if (keyboardIn.length == 0 || keyboardIn.length > 3) help();
         if (keyboardIn.length == 1) {
             ADDRESS = keyboardIn[0];
@@ -311,15 +311,9 @@ public class GetContents {
                     } else {
                         ADDRESS = keyboardIn[0];
                     }
-                    String name = ADDRESS.replace(".pdf", "").concat("_output.json");
+                    OUTPUT = ADDRESS.replace(".pdf", "").concat("_output.json");
                     initialize();
                     PrintStream printStream = null;
-                    try {
-                        printStream = new PrintStream(new File(name));
-                    } catch (FileNotFoundException e) {
-                        System.out.println("Can not create a output file with name " + name);
-                        System.exit(1);
-                    }
                     printCatalog(false);
                 } else {
                     ADDRESS = keyboardIn[0];
