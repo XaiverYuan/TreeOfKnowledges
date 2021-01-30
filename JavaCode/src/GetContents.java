@@ -8,7 +8,6 @@ import java.util.stream.StreamSupport;
 
 import com.sun.istack.NotNull;
 import com.sun.istack.Nullable;
-import javafx.util.Pair;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.interactive.documentnavigation.outline.PDDocumentOutline;
 import org.apache.pdfbox.text.PDFTextStripper;
@@ -39,7 +38,6 @@ public class GetContents {
         assert pDDocument != null;
     }
 
-    static List<Pair<String, Integer>> titleToPage;
 
     /**
      * print the catalog of the book to the print stream
