@@ -278,7 +278,7 @@ public class GetContents {
     //if the decoding is not working, try gb18030
     public static void main(final String[] args) {
         String[] keyboardIn = args;
-        keyboardIn = new String[]{"D:\\GITHUB\\TreeOfKnowledges\\testing\\348\\348.pdf","D:\\GITHUB\\TreeOfKnowledges\\testing\\348\\348.JSON"};
+        keyboardIn = new String[]{"F:/Research/348.pdf"};
         if (keyboardIn.length == 0 || keyboardIn.length > 3) help();
         if (keyboardIn.length == 1) {
             ADDRESS = keyboardIn[0];

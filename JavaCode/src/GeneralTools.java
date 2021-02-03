@@ -5,6 +5,13 @@ public class GeneralTools {
     public static String stringClean(String a) {
         return stringClean(a,true);
     }
+
+    /**
+     *
+     * @param a the target String we try to clean
+     * @param cleanSpace do we remove
+     * @return
+     */
     public static String stringClean(String a,boolean cleanSpace) {
         StringBuilder aa = new StringBuilder();
         a=a.toLowerCase();
