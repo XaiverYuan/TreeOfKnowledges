@@ -189,7 +189,7 @@ public class PDFTreeNode {
                             Print out the error message and set the cut, and done
                          */
                         myprinter.println("Can not find the accurate location of " + title + ", find ");
-                        myprinter.println(secondTarget.get() + "as its replacement");
+                        myprinter.println(GeneralTools.stringClean(secondTarget.get(),false) + " as its replacement");
                         startPageSeparateIndex = text.indexOf(secondTarget.get());
                     } else {
                         /*
