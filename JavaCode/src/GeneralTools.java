@@ -15,6 +15,7 @@ public class GeneralTools {
     public static String stringClean(String a,boolean cleanSpace) {
         StringBuilder aa = new StringBuilder();
         a=a.toLowerCase();
+
         List<Integer> integers = new ArrayList<>();
         for (char c : a.toCharArray()) {
             integers.add((int) c);

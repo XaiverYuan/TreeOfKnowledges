@@ -24,7 +24,6 @@ public class PDFTreeNode {
     int startPageSeparateIndex;
     /**
      * The corresponding PDOutlineItem for this Node
-     *
      * @see PDOutlineItem
      */
     PDOutlineItem pdOutlineItem;
@@ -135,7 +134,7 @@ public class PDFTreeNode {
      */
     private PDFTreeNode(PDOutlineItem pdOutlineItem, PDFTreeNode parent) {
         /*
-            Add this node to the list, so it is in perorder
+            Add this node to the list, so it is in preorder
          */
         all.add(this);
         this.pdOutlineItem = pdOutlineItem;
