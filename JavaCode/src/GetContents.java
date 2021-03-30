@@ -78,6 +78,11 @@ public class GetContents {
     /**
      * a private function for inserting index into each node
      */
+
+    //Please delete this when public, this is only for testing
+    public static ArrayList<String> TESTindex=new ArrayList<>();
+
+    //TODO: handle the case if there is no index.
     private static void processIndex() {
         /*
             Find the Node of Index
@@ -126,6 +131,7 @@ public class GetContents {
                             wordEnded = false;
                         } else currentWord.append(token);
                     } else {
+                        TESTindex.add(currentWord.toString());
                     /*
                         When there starting to be pure numbers, it should be the pages
                      */
@@ -278,7 +284,7 @@ public class GetContents {
     //if the decoding is not working, try gb18030
     public static void main(final String[] args) {
         String[] keyboardIn = args;
-        keyboardIn = new String[]{"F:/Research/348.pdf"};
+        keyboardIn = new String[]{"D:\\intellijProjects\\TreeOfKnowledges\\Used_Books\\math1.pdf"};
         if (keyboardIn.length == 0 || keyboardIn.length > 3) help();
         if (keyboardIn.length == 1) {
             ADDRESS = keyboardIn[0];
@@ -315,6 +321,7 @@ public class GetContents {
                     initialize();
                     PrintStream printStream = null;
                     printCatalog(false);
+                    System.out.println("?");
                 } else {
                     ADDRESS = keyboardIn[0];
                     initialize();
