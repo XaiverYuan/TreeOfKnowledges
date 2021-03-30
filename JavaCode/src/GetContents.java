@@ -46,14 +46,17 @@ public class GetContents {
      */
     public static void printCatalog(boolean content) {
         System.out.println("Processing Index");
-        processIndex();
-        System.out.println("Index initialized");
+        if(processIndex()) {
+            System.out.println("Index initialized");
+        }else {
+            System.out.println("This book does not contains an index");
+        }
         try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(OUTPUT), StandardCharsets.UTF_8))) {
             bufferedWriter.write("{\n\"bookTitle\": \"" + pDDocument.getDocumentInformation().getTitle() + "\",\n");
             bufferedWriter.write("\"TOC\": [\n");
             System.out.println("Basic check done");
-            String a=PDFTreeNode.showTree(content);
-            bufferedWriter.write(a+"\n");
+            String a = PDFTreeNode.showTree(content);
+            bufferedWriter.write(a + "\n");
             bufferedWriter.write("]\n}\n");
             System.out.println("Writing done");
         } catch (IOException e) {
@@ -80,10 +83,10 @@ public class GetContents {
      */
 
     //Please delete this when public, this is only for testing
-    public static ArrayList<String> TESTindex=new ArrayList<>();
+    public static ArrayList<String> TESTindex = new ArrayList<>();
 
     //TODO: handle the case if there is no index.
-    private static void processIndex() {
+    private static boolean processIndex() {
         /*
             Find the Node of Index
             From back the front, the first one contains "index" should be the index
@@ -95,7 +98,7 @@ public class GetContents {
                 break;
             }
         }
-        assert index != null;
+        if (index == null) return false;
         try {
             /*
                 getting content of the index part
@@ -262,10 +265,11 @@ public class GetContents {
                     System.err.println("but it is ok");
                 }
             }
-
+            return true;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     /**
@@ -290,8 +294,8 @@ public class GetContents {
             ADDRESS = keyboardIn[0];
             initialize();
             PrintStream printStream = null;
-            OUTPUT= ADDRESS.replace(".pdf", "").concat("_output.json");
-            printCatalog( true);
+            OUTPUT = ADDRESS.replace(".pdf", "").concat("_output.json");
+            printCatalog(true);
         }
         if (keyboardIn.length == 2) {
             if (Arrays.asList(keyboardIn).contains("-c")) {
@@ -325,8 +329,8 @@ public class GetContents {
                 } else {
                     ADDRESS = keyboardIn[0];
                     initialize();
-                    OUTPUT=keyboardIn[1];
-                    printCatalog( true);
+                    OUTPUT = keyboardIn[1];
+                    printCatalog(true);
                 }
             }
         }
@@ -349,8 +353,8 @@ public class GetContents {
                     list = list.stream().filter(e -> !e.equals("-s")).collect(Collectors.toList());
                     ADDRESS = list.get(0);
                     initialize();
-                    OUTPUT=list.get(1);
-                    printCatalog( false);
+                    OUTPUT = list.get(1);
+                    printCatalog(false);
                 } else {
                     help();
                 }
